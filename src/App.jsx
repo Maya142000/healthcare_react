@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./components/Home/home";
+import Home from "./components/Home/Home";
 import DoctorLogin from "./components/Doctor/DoctorLogin";
 import PatientLogin from "./components/Patient/patientLogin";
 import DoctorsList from "./components/Doctor/DoctorList";
