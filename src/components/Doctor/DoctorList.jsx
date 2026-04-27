@@ -47,7 +47,7 @@ export default function DoctorsList() {
                         My Profile
                     </button>
                     <button
-                        onClick={() => { localStorage.clear(); navigate("/home"); }}
+                        onClick={() => { localStorage.clear(); navigate("/doctorlogin"); }}
                         className="px-4 py-2 bg-red-50 border border-red-100 rounded-lg text-[13px] font-medium text-red-600 cursor-pointer hover:bg-red-100 transition-colors"
                     >
                         Sign Out
