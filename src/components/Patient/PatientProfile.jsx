@@ -63,8 +63,8 @@ export default function PatientProfile() {
                 </button>
                 <div className="bg-gradient-to-r from-teal-700 to-teal-500 rounded-2xl p-8 flex items-center gap-6 mb-6 shadow-sm">
                     <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/30 bg-teal-50 flex items-center justify-center shrink-0">
-                        {patient?.doctor_image ? (
-                            <img src={patient.doctor_image} alt={patient.name} className="w-full h-full object-cover" />
+                        {patient?.patient_image ? (
+                            <img src={patient.patient_image} alt={patient.name} className="w-full h-full object-cover" />
                         ) : (
                             <span className="text-3xl font-bold text-teal-700">
                                 {patient?.name?.charAt(0).toUpperCase()}
