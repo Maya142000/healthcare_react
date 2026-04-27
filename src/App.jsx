@@ -12,9 +12,9 @@ function App() {
     return (
         <Routes>
             {/* Default redirect */}
-            <Route path="/" element={<Navigate to="/home" />} />
+            {/* <Route path="/" element={<Navigate to="/home" />} /> */}
 
-            <Route path="/home" element={<Home />} />
+            {/* <Route path="/home" element={<Home />} /> */}
             <Route path="/patientlogin" element={<PatientLogin />} />
             <Route path="/doctorlogin" element={<DoctorLogin />} />
             <Route path="/doctorsList" element={<DoctorsList />} />

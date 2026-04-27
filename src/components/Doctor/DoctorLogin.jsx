@@ -200,7 +200,7 @@ export default function DoctorLogin() {
                     </span>
                 </div>
                 <div className="flex gap-3">
-                    <button
+                    {/* <button
                         onClick={() => navigate("/doctorlogin")}
                         className="px-4 py-2 border border-slate-200 bg-white rounded-lg text-[13px] font-medium text-slate-900 cursor-pointer hover:bg-slate-50 transition-colors"
                     >
@@ -211,18 +211,18 @@ export default function DoctorLogin() {
                         className="px-4 py-2 border border-slate-200 bg-white rounded-lg text-[13px] font-medium text-slate-900 cursor-pointer hover:bg-slate-50 transition-colors"
                     >
                         Patient Portal
-                    </button>
+                    </button> */}
                 </div>
             </nav>
 
             {/* BODY */}
-            <div className="px-4 py-8">
-                <button
+            <div className="px-4 py-30">
+                {/* <button
                     onClick={() => navigate("/home")}
                     className="flex items-center gap-1 text-[13px] text-slate-500 mb-6 bg-transparent border-none cursor-pointer hover:text-slate-800 transition-colors"
                 >
                     ← Back to Home
-                </button>
+                </button> */}
 
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 max-w-[560px]  mx-auto shadow-sm">
                     <h1 className="font-serif font-extrabold text-[2rem] text-slate-900 mb-1">
