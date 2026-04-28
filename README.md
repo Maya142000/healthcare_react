@@ -80,7 +80,7 @@ react_frontend/
 ### Prerequisites
 
 - Node.js :- 22.19.0
-- Backend server running (`https://your-backend-domain.onrender.com`)
+- Backend server running (`https://healthcare-react-backend.onrender.com`)
 
 -------------------------------------------------------------------------------------
 
@@ -224,8 +224,8 @@ The frontend is deployed on Netlify. The `public/_redirects` file ensures all ro
 
 # Production URLs:
 - Frontend: 
-    `https://darling-gaufre-29d494.netlify.app/doctorlogin`
-    `https://darling-gaufre-29d494.netlify.app/patientlogin`
+    `https://healthcare-react-6e4e.onrender.com/doctorlogin`
+    `https://healthcare-react-6e4e.onrender.com/patientlogin`
 - Backend: `https://healthcare-react-backend.onrender.com`
 
 # Build
