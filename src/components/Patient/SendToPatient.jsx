@@ -3,16 +3,16 @@ import { toast } from "react-hot-toast";
 import api from "../../config/apiConfig";
 
 export default function SendToPatient({ consultation, rx, onSent }) {
-    const [sending, setSending]   = useState(false);
-    const [sent, setSent]         = useState(!!consultation?.prescription?.sent);
-    const [showConfirm, setShow]  = useState(false);
+    const [sending, setSending] = useState(false);
+    const [sent, setSent] = useState(!!consultation?.prescription?.sent);
+    const [showConfirm, setShow] = useState(false);
 
     const handleSend = async () => {
         setSending(true);
         try {
             const response = await api.post("prescription/sendPrescriptionToPatient", {
                 consultationId: consultation._id,
-                patientId:      consultation.patientId,
+                patientId: consultation.patientId,
             });
             const result = response.data;
             if (result?.status === true) {
@@ -32,7 +32,6 @@ export default function SendToPatient({ consultation, rx, onSent }) {
 
     return (
         <>
-            {/* Trigger Button */}
             <button
                 onClick={() => setShow(true)}
                 className={`px-4 py-1.5 rounded-lg text-[12px] font-medium cursor-pointer transition-colors ${
@@ -44,12 +43,10 @@ export default function SendToPatient({ consultation, rx, onSent }) {
                 {sent ? "✓ Resend ✉" : "Send ✉"}
             </button>
 
-            {/* Confirm Modal */}
             {showConfirm && (
                 <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center px-4">
                     <div className="bg-white rounded-2xl shadow-2xl w-full max-w-[420px] overflow-hidden">
 
-                        {/* Modal Header */}
                         <div className="bg-teal-700 px-6 py-5">
                             <h3 className="text-white font-semibold text-[16px]">
                                 {sent ? "Resend Prescription?" : "Send Prescription?"}
@@ -61,7 +58,6 @@ export default function SendToPatient({ consultation, rx, onSent }) {
                             </p>
                         </div>
 
-                        {/* Patient Info */}
                         <div className="px-6 py-5 border-b border-slate-100">
                             <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 rounded-full bg-teal-50 border-2 border-teal-100 flex items-center justify-center text-teal-700 font-bold text-[16px] shrink-0">
@@ -77,7 +73,6 @@ export default function SendToPatient({ consultation, rx, onSent }) {
                                 </div>
                             </div>
 
-                            {/* Rx Summary */}
                             <div className="mt-4 bg-slate-50 rounded-xl p-4 space-y-2">
                                 <div>
                                     <p className="text-[10px] font-bold text-teal-700 uppercase tracking-wide mb-1">
@@ -100,7 +95,6 @@ export default function SendToPatient({ consultation, rx, onSent }) {
                             </div>
                         </div>
 
-                        {/* Actions */}
                         <div className="px-6 py-4 flex gap-3">
                             <button
                                 onClick={handleSend}

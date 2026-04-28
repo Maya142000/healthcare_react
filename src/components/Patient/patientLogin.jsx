@@ -173,7 +173,6 @@ export default function PatientPortal() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -199,7 +198,6 @@ export default function PatientPortal() {
                 </div> */}
             </nav>
 
-            {/* BODY */}
             <div className="px-4 py-30">
                 {/* <button
                     onClick={() => navigate("/home")}
@@ -216,7 +214,6 @@ export default function PatientPortal() {
                         Sign in to manage your health consultations
                     </p>
 
-                    {/* TABS */}
                     <div className="flex bg-slate-50 rounded-lg p-1 mb-6">
                         <button
                             onClick={() => { setTab("signin"); setErrors({}); }}
@@ -240,7 +237,6 @@ export default function PatientPortal() {
                         </button>
                     </div>
 
-                    {/* ── SIGN IN ── */}
                     {tab === "signin" ? (
                         <>
                             <div className="mb-4">
@@ -288,9 +284,7 @@ export default function PatientPortal() {
                             </p>
                         </>
                     ) : (
-                        /* ── SIGN UP ── */
                         <>
-                            {/* PHOTO UPLOAD */}
                             <div className="flex items-center gap-4 mb-5">
                                 <div
                                     onClick={() => fileRef.current.click()}
@@ -319,7 +313,6 @@ export default function PatientPortal() {
                                 </div>
                             </div>
 
-                            {/* NAME + AGE */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="mb-4">
                                     <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
@@ -357,7 +350,6 @@ export default function PatientPortal() {
                                 </div>
                             </div>
 
-                            {/* EMAIL */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Email <span className="text-red-500">*</span>
@@ -375,7 +367,6 @@ export default function PatientPortal() {
                                 )}
                             </div>
 
-                            {/* PASSWORD */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Password <span className="text-red-500">*</span>
@@ -393,7 +384,6 @@ export default function PatientPortal() {
                                 )}
                             </div>
 
-                            {/* PHONE */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Phone Number <span className="text-red-500">*</span>
@@ -411,7 +401,6 @@ export default function PatientPortal() {
                                 )}
                             </div>
 
-                            {/* SURGERY HISTORY */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     History of Surgery
@@ -427,7 +416,6 @@ export default function PatientPortal() {
                                 />
                             </div>
 
-                            {/* ILLNESS HISTORY */}
                             <div className="mb-2">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     History of Illness
@@ -443,7 +431,6 @@ export default function PatientPortal() {
                                 />
                             </div>
 
-                            {/* ILLNESS TAGS PANEL */}
                             {illnessTags.length > 0 && (
                                 <div className="mb-4 p-3 bg-teal-50 border border-teal-100 rounded-xl">
                                     <p className="text-[11px] font-semibold text-teal-700 uppercase tracking-wide mb-2">

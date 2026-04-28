@@ -33,7 +33,6 @@ export default function PatientProfile() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -54,7 +53,6 @@ export default function PatientProfile() {
             </nav>
 
             <div className="max-w-2xl mx-auto px-4 py-10">
-                {/* Profile Hero */}
                 <button
                     onClick={() => navigate("/doctorsList")}
                     className="flex items-center gap-1 text-[13px] text-slate-500 mb-6 bg-transparent border-none cursor-pointer hover:text-slate-800 transition-colors"
@@ -76,7 +74,6 @@ export default function PatientProfile() {
                     </div>
                 </div>
 
-                {/* Info Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                     {[
                         { label: "Email", value: patient?.email },

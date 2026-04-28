@@ -33,7 +33,6 @@ export default function DoctorProfile() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -60,7 +59,6 @@ export default function DoctorProfile() {
             </nav>
 
             <div className="max-w-2xl mx-auto px-4 py-10">
-                {/* Profile Hero */}
                 <button
                     onClick={() => navigate("/prescriptionPanel")}
                     className="flex items-center gap-1 text-[13px] text-slate-500 mb-6 bg-transparent border-none cursor-pointer hover:text-slate-800 transition-colors"
@@ -86,12 +84,11 @@ export default function DoctorProfile() {
                     </div>
                 </div>
 
-                {/* Info Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                     {[
-                        { label: "Email",      value: doctor?.email },
-                        { label: "Phone",      value: doctor?.mobileNo },
-                        { label: "Specialty",  value: doctor?.specialty },
+                        { label: "Email", value: doctor?.email },
+                        { label: "Phone", value: doctor?.mobileNo },
+                        { label: "Specialty", value: doctor?.specialty },
                         { label: "Experience", value: `${doctor?.experience} years` },
                     ].map(({ label, value }) => (
                         <div key={label} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
@@ -101,7 +98,6 @@ export default function DoctorProfile() {
                     ))}
                 </div>
 
-                {/* CTA */}
                 <button
                     onClick={() => navigate("/prescriptionPanel")}
                     className="w-full py-4 bg-teal-700 text-white rounded-2xl text-[15px] font-semibold cursor-pointer hover:bg-teal-800 transition-colors shadow-sm"

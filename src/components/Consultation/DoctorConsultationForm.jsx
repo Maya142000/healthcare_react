@@ -81,7 +81,6 @@ export default function ConsultationForm() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -105,7 +104,6 @@ export default function ConsultationForm() {
                     <h1 className="font-serif font-extrabold text-[1.8rem] text-slate-900 mb-1">Consultation Form</h1>
                     <p className="text-[14px] text-slate-500 mb-8">Fill in your details for the consultation</p>
 
-                    {/* STEP INDICATOR */}
                     <div className="flex items-center mb-8">
                         {STEPS.map((label, i) => {
                             const stepNum = i + 1;
@@ -141,7 +139,6 @@ export default function ConsultationForm() {
                         })}
                     </div>
 
-                    {/* ── STEP 1 ── */}
                     {currentStep === 1 && (
                         <div>
                             <div className="mb-4">
@@ -175,10 +172,8 @@ export default function ConsultationForm() {
                         </div>
                     )}
 
-                    {/* ── STEP 2 ── */}
                     {currentStep === 2 && (
                         <div>
-                            {/* Diabetes Radio */}
                             <div className="mb-5">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-3">
                                     Diabetes Status <span className="text-red-500">*</span>
@@ -209,7 +204,6 @@ export default function ConsultationForm() {
                                 </div>
                             </div>
 
-                            {/* Allergies */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Any Allergies
@@ -223,7 +217,6 @@ export default function ConsultationForm() {
                                 />
                             </div>
 
-                            {/* Others */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Others
@@ -239,10 +232,8 @@ export default function ConsultationForm() {
                         </div>
                     )}
 
-                    {/* ── STEP 3 ── */}
                     {currentStep === 3 && (
                         <div>
-                            {/* QR Code */}
                             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center mb-5">
                                 <p className="text-[13px] font-medium text-slate-600 mb-3">
                                     Scan QR code to pay consultation fee
@@ -261,7 +252,6 @@ export default function ConsultationForm() {
                                 <p className="text-[12px] text-slate-400 mt-1">UPI: medconsult@upi</p>
                             </div>
 
-                            {/* Transaction ID */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Transaction ID <span className="text-red-500">*</span>
@@ -280,7 +270,6 @@ export default function ConsultationForm() {
                         </div>
                     )}
 
-                    {/* NAV BUTTONS */}
                     <div className="flex gap-3 mt-6 pt-6 border-t border-slate-100">
                         {currentStep > 1 && (
                             <button

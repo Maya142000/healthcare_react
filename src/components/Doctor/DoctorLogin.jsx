@@ -182,7 +182,6 @@ export default function DoctorLogin() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -215,7 +214,6 @@ export default function DoctorLogin() {
                 </div>
             </nav>
 
-            {/* BODY */}
             <div className="px-4 py-30">
                 {/* <button
                     onClick={() => navigate("/home")}
@@ -258,7 +256,6 @@ export default function DoctorLogin() {
 
                     {tab === "signin" ? (
                         <>
-                            {/* EMAIL */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Email{" "}
@@ -274,7 +271,6 @@ export default function DoctorLogin() {
                                 />
                             </div>
 
-                            {/* PASSWORD */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Password{" "}
@@ -302,7 +298,6 @@ export default function DoctorLogin() {
                         </>
                     ) : (
                         <>
-                            {/* PHOTO UPLOAD */}
                             <div className="flex items-center gap-4 mb-5">
                                 <div
                                     onClick={() => fileRef.current.click()}
@@ -335,7 +330,6 @@ export default function DoctorLogin() {
                                 </div>
                             </div>
 
-                            {/* NAME + SPECIALTY */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="mb-4">
                                     <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
@@ -373,7 +367,6 @@ export default function DoctorLogin() {
                                 </div>
                             </div>
 
-                            {/* EMAIL */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Email{" "}
@@ -388,7 +381,6 @@ export default function DoctorLogin() {
                                 />
                             </div>
 
-                            {/* PASSWORD */}
                             <div className="mb-4">
                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                     Password{" "}
@@ -404,7 +396,6 @@ export default function DoctorLogin() {
                                 />
                             </div>
 
-                            {/* PHONE + EXPERIENCE */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="mb-4">
                                     <label className="block text-[13px] font-medium text-slate-600 mb-1.5">

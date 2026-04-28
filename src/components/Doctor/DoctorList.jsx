@@ -29,7 +29,6 @@ export default function DoctorsList() {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -98,7 +97,6 @@ export default function DoctorsList() {
 function DoctorCard({ doctor, onConsult }) {
     return (
         <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center text-center">
-            {/* Avatar */}
             <div className="w-20 h-20 rounded-full overflow-hidden bg-teal-50 border-4 border-teal-100 mb-4 flex items-center justify-center shrink-0">
                 {doctor.doctor_image ? (
                     <img src={doctor.doctor_image} alt={doctor.name} className="w-full h-full object-cover" />
@@ -109,18 +107,14 @@ function DoctorCard({ doctor, onConsult }) {
                 )}
             </div>
 
-            {/* Name */}
             <h3 className="text-[15px] font-semibold text-slate-900 mb-1 leading-tight">{doctor.name}</h3>
-
-            {/* Specialty badge */}
+            
             <span className="inline-block px-3 py-0.5 bg-teal-50 text-teal-700 text-[11px] font-semibold rounded-full mb-1">
                 {doctor.specialty}
             </span>
 
-            {/* Experience */}
             <p className="text-[12px] text-slate-400 mb-4">{doctor.experience} yrs experience</p>
 
-            {/* Consult Button */}
             <button
                 onClick={onConsult}
                 className="w-full py-2.5 bg-teal-700 text-white rounded-xl text-[13px] font-semibold cursor-pointer hover:bg-teal-800 transition-colors"

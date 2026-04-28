@@ -7,27 +7,26 @@ import SendToPatient from "../Patient/SendToPatient";
 
 export default function PrescriptionPanel() {
     const [consultations, setConsultations] = useState([]);
-    const [loading, setLoading]             = useState(true);
-    const [activeId, setActiveId]           = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [activeId, setActiveId] = useState(null);
     const [prescriptions, setPrescriptions] = useState({});
-    const navigate   = useNavigate();
+    const navigate = useNavigate();
     const doctorName = localStorage.getItem("doctorName") || "";
 
     useEffect(() => { fetchConsultations(); }, []);
 
-    // ── FETCH ─────────────────────────────────────────────────────
     const fetchConsultations = async () => {
         try {
             const doctorId = localStorage.getItem("userid");
             const response = await api.get(`/consultation/getConsultationById/${doctorId}`);
-            const result   = response.data;
+            const result = response.data;
             if (result?.status === true) {
                 setConsultations(result.Data);
                 const map = {};
                 result.Data.forEach((c) => {
                     if (c.prescription) {
                         map[c._id] = {
-                            care:      c.prescription.care,
+                            care: c.prescription.care,
                             medicines: c.prescription.medicines?.length
                                 ? c.prescription.medicines
                                 : [""],
@@ -43,7 +42,6 @@ export default function PrescriptionPanel() {
         }
     };
 
-    // ── RX HELPERS ────────────────────────────────────────────────
     const getRx = (id) => prescriptions[id] || { care: "", medicines: [""] };
 
     const updateRx = (id, field, value) =>
@@ -66,7 +64,6 @@ export default function PrescriptionPanel() {
         updateRx(id, "medicines", getRx(id).medicines.filter((_, i) => i !== idx));
     };
 
-    // ── SUBMIT (save / update) ────────────────────────────────────
     const handleSubmit = async (consultation, resend = false) => {
         const rx = getRx(consultation._id);
         if (!rx.care.trim()) { toast.error("Care to be taken is required"); return; }
@@ -74,13 +71,13 @@ export default function PrescriptionPanel() {
         try {
             const payload  = {
                 consultationId: consultation._id,
-                patientId:      consultation.patientId._id,
-                care:           rx.care,
-                medicines:      rx.medicines.filter(Boolean),
+                patientId: consultation.patientId._id,
+                care: rx.care,
+                medicines: rx.medicines.filter(Boolean),
             };
             const endpoint = resend ? "/prescription/updatePrescription" : "/prescription/addPrescription";
             const response = await api.post(endpoint, payload);
-            const result   = response.data;
+            const result = response.data;
 
             if (result?.status === true) {
                 toast.success(resend ? "Prescription updated!" : "Prescription saved!");
@@ -95,11 +92,9 @@ export default function PrescriptionPanel() {
         }
     };
 
-    // ── RENDER ────────────────────────────────────────────────────
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
 
-            {/* NAV */}
             <nav className="bg-white border-b border-slate-200 px-8 flex items-center justify-between h-16">
                 <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center">
@@ -117,7 +112,6 @@ export default function PrescriptionPanel() {
                 </button>
             </nav>
 
-            {/* PAGE */}
             <div className="px-6 py-8 max-w-4xl mx-auto">
                 <button
                     onClick={() => navigate("/doctorProfile")}
@@ -134,7 +128,6 @@ export default function PrescriptionPanel() {
                     </p>
                 </div>
 
-                {/* STATES */}
                 {loading ? (
                     <div className="text-center py-16 text-slate-400 text-[14px]">
                         Loading consultations...
@@ -159,9 +152,7 @@ export default function PrescriptionPanel() {
                                     key={c._id}
                                     className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden"
                                 >
-                                    {/* ── CARD HEADER ── */}
                                     <div className="p-5 flex items-start justify-between gap-4 flex-wrap">
-                                        {/* Patient info */}
                                         <div className="flex items-center gap-4">
                                             <div className="w-12 h-12 rounded-full bg-teal-50 border-2 border-teal-100 flex items-center justify-center text-teal-700 font-bold text-[16px] shrink-0">
                                                 {c.patientId?.name?.charAt(0).toUpperCase()}
@@ -176,9 +167,7 @@ export default function PrescriptionPanel() {
                                             </div>
                                         </div>
 
-                                        {/* Action buttons */}
                                         <div className="flex items-center gap-2 flex-wrap">
-                                            {/* Status badge */}
                                             <span className={`px-3 py-1 rounded-full text-[11px] font-semibold ${
                                                 hasPrescription
                                                     ? "bg-green-100 text-green-700"
@@ -187,7 +176,6 @@ export default function PrescriptionPanel() {
                                                 {hasPrescription ? "✓ Prescribed" : "Pending"}
                                             </span>
 
-                                            {/* Write / Edit toggle */}
                                             <button
                                                 onClick={() => setActiveId(isOpen ? null : c._id)}
                                                 className="px-4 py-1.5 border border-teal-200 text-teal-700 rounded-lg text-[12px] font-medium cursor-pointer hover:bg-teal-50 transition-colors"
@@ -195,10 +183,8 @@ export default function PrescriptionPanel() {
                                                 {isOpen ? "Close" : hasPrescription ? "Edit" : "Write Rx"}
                                             </button>
 
-                                            {/* PDF + Send — only when prescription exists */}
                                             {hasPrescription && (
                                                 <>
-                                                    {/* ↓ PDF — calls generatePDF util directly */}
                                                     <button
                                                         onClick={() =>
                                                             generatePrescriptionPDF(c, rx, doctorName)
@@ -208,7 +194,6 @@ export default function PrescriptionPanel() {
                                                         ↓ PDF
                                                     </button>
 
-                                                    {/* ✉ Send — SendToPatient component */}
                                                     <SendToPatient
                                                         consultation={c}
                                                         rx={rx}
@@ -219,7 +204,6 @@ export default function PrescriptionPanel() {
                                         </div>
                                     </div>
 
-                                    {/* ── CONSULTATION DETAILS ── */}
                                     <div className="px-5 pb-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
                                         <Detail label="Illness"        value={c.current_illness} />
                                         <Detail label="Recent Surgery" value={c.recent_surgery || "None"} />
@@ -229,14 +213,12 @@ export default function PrescriptionPanel() {
                                         <Detail label="Transaction ID" value={c.transactionId} />
                                     </div>
 
-                                    {/* ── PRESCRIPTION FORM (inline expand) ── */}
                                     {isOpen && (
                                         <div className="border-t border-slate-100 bg-slate-50 px-5 py-5">
                                             <h4 className="text-[14px] font-semibold text-slate-800 mb-4">
                                                 {hasPrescription ? "Edit Prescription" : "Write Prescription"}
                                             </h4>
 
-                                            {/* Care to be taken */}
                                             <div className="mb-4">
                                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                                     Care to be Taken{" "}
@@ -253,7 +235,6 @@ export default function PrescriptionPanel() {
                                                 />
                                             </div>
 
-                                            {/* Medicines */}
                                             <div className="mb-4">
                                                 <label className="block text-[13px] font-medium text-slate-600 mb-1.5">
                                                     Medicines
@@ -288,7 +269,6 @@ export default function PrescriptionPanel() {
                                                 </button>
                                             </div>
 
-                                            {/* Save / Update */}
                                             <div className="flex gap-3">
                                                 <button
                                                     onClick={() => handleSubmit(c, hasPrescription)}
@@ -317,7 +297,6 @@ export default function PrescriptionPanel() {
     );
 }
 
-// ── DETAIL CHIP ───────────────────────────────────────────────────
 function Detail({ label, value }) {
     return (
         <div className="bg-white border border-slate-100 rounded-xl px-3 py-2.5">

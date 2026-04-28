@@ -24,7 +24,7 @@ function App() {
             <Route path="/prescriptionPanel" element={<PrescriptionPanel />} />
 
             {/* 404 not Found */}
-            <Route path="*" element={<Navigate to="/home" />} />
+            {/* <Route path="*" element={<Navigate to="/home" />} /> */}
         </Routes>
     );
 }

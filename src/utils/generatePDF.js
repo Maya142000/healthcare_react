@@ -6,7 +6,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     const margin = 20;
     let y        = margin;
 
-    // ── HEADER ────────────────────────────────────────────────────
     doc.setFillColor(15, 118, 110);
     doc.rect(0, 0, 210, 42, "F");
 
@@ -27,7 +26,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
 
     y = 55;
 
-    // ── DOCTOR ────────────────────────────────────────────────────
     doc.setTextColor(30, 41, 59);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
@@ -43,13 +41,11 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     );
     y += 14;
 
-    // ── DIVIDER ───────────────────────────────────────────────────
     doc.setDrawColor(226, 232, 240);
     doc.setLineWidth(0.4);
     doc.line(margin, y, 190, y);
     y += 10;
 
-    // ── PATIENT ───────────────────────────────────────────────────
     doc.setFillColor(248, 250, 252);
     doc.roundedRect(margin, y, 170, 28, 3, 3, "F");
 
@@ -72,7 +68,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     );
     y += 36;
 
-    // ── ILLNESS ───────────────────────────────────────────────────
     doc.setTextColor(15, 118, 110);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(8);
@@ -88,7 +83,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     doc.text(illnessLines, margin, y);
     y += illnessLines.length * 5 + 12;
 
-    // ── CARE ──────────────────────────────────────────────────────
     doc.setDrawColor(226, 232, 240);
     doc.line(margin, y, 190, y);
     y += 10;
@@ -108,7 +102,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     doc.text(careLines, margin, y);
     y += careLines.length * 6 + 12;
 
-    // ── MEDICINES ─────────────────────────────────────────────────
     const meds = (rx.medicines || []).filter(Boolean);
     if (meds.length > 0) {
         doc.setDrawColor(226, 232, 240);
@@ -144,7 +137,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
         y += 4;
     }
 
-    // ── FAMILY HISTORY ────────────────────────────────────────────
     if (consultation.diabetes || consultation.allergies || consultation.others) {
         doc.setDrawColor(226, 232, 240);
         doc.line(margin, y, 190, y);
@@ -176,7 +168,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
         y += 6;
     }
 
-    // ── SIGNATURE ─────────────────────────────────────────────────
     y = Math.max(y + 10, 245);
     doc.setDrawColor(180, 200, 200);
     doc.line(130, y, 190, y);
@@ -184,7 +175,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
     doc.setFontSize(8);
     doc.text("Doctor's Signature", 138, y + 5);
 
-    // ── FOOTER ────────────────────────────────────────────────────
     const footerY = 278;
     doc.setFillColor(248, 250, 252);
     doc.rect(0, footerY, 210, 20, "F");
@@ -204,7 +194,6 @@ export function generatePrescriptionPDF(consultation, rx, doctorName = "") {
         margin, footerY + 14
     );
 
-    // ── SAVE ──────────────────────────────────────────────────────
     const fileName = `prescription_${(consultation.patientId.name || "patient").replace(/\s+/g, "_")}_${Date.now()}.pdf`;
     doc.save(fileName);
     return fileName;

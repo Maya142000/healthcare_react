@@ -7,7 +7,6 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-[#1f2a3a] text-white font-sans">
-            {/* Header */}
             <div className="flex justify-between items-center px-10 py-4 bg-white text-black">
                 <div className="flex items-center gap-3">
                     <div className="bg-[#0F766E] w-10 h-10 flex items-center justify-center rounded-lg overflow-hidden">
@@ -35,7 +34,6 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Main Section */}
             <div className="flex flex-col items-center justify-center text-center mt-20 px-6">
                 <h1 className="text-5xl font-bold mb-4 font-serif">
                     Healthcare at Your Fingertips
